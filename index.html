@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--
+  Math 172 — Lesson 11 (Part B): Trig Across Quadrants
+  Navigation: Sidebar (5 sections + Collaborative)
+  Sources: SAC Lesson 11 SP26 v2 + OpenStax Algebra & Trigonometry 2e §7.1, 7.3, 7.4
+  Built: SAC Lecture-Web-Orchestrator
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11B: Trig Across Quadrants — Math 172</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--teal-dark:#1a6b6b;--teal-mid:#2a8f8f;--teal-light:#e6f4f4;--orange:#e07020;--orange-light:#fff3e6;--navy:#1a1a2e;--gray-text:#444;--gray-mid:#ccc}
+*{box-sizing:border-box}
+body{font-family:Georgia,serif;margin:0;background:#f9f9f9;color:var(--gray-text);line-height:1.55}
+header.top{background:var(--navy);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+header.top p{margin:0;font-size:12px;letter-spacing:1px;opacity:0.7;text-transform:uppercase}
+header.top h1{margin:4px 0 0;font-size:24px;font-weight:normal}
+.lo-bar{background:var(--teal-dark);color:#fff;padding:14px 24px;font-size:14px}
+.lo-bar ul{margin:6px 0 0;padding-left:22px}
+.layout{display:flex;min-height:calc(100vh - 140px)}
+nav.side{width:240px;background:#fff;border-right:1px solid var(--gray-mid);padding:20px 0;position:sticky;top:0;height:calc(100vh - 0px);overflow-y:auto;flex-shrink:0}
+nav.side h4{margin:0 0 10px 18px;color:var(--teal-dark);font-size:13px;letter-spacing:1px;text-transform:uppercase;font-family:Arial,sans-serif}
+nav.side a{display:block;padding:9px 18px;color:var(--gray-text);text-decoration:none;font-size:14px;border-left:3px solid transparent}
+nav.side a:hover{background:var(--teal-light);border-left-color:var(--teal-mid)}
+nav.side a.active{background:var(--teal-light);border-left-color:var(--teal-dark);color:var(--teal-dark);font-weight:bold}
+main{flex:1;padding:24px 36px;max-width:980px}
+section{padding:28px 0;border-bottom:1px solid #eee}
+section h2{color:var(--teal-dark);font-size:24px;margin-top:0;border-bottom:2px solid var(--teal-dark);padding-bottom:6px}
+.def{background:var(--teal-light);border-left:5px solid var(--teal-dark);padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0}
+.def .src{margin:0 0 4px;font-size:12px;color:#555;font-style:italic}
+.def p{margin:6px 0;font-size:16px}
+.warn{background:var(--orange-light);border-left:5px solid var(--orange);padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0}
+.warn p{margin:0;font-size:15px}
+.guess{background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:18px;margin:20px 0}
+.guess .q{font-weight:bold;margin:0 0 10px}
+.guess input,.guess textarea{width:90%;padding:8px;font-size:14px;border:1px solid #ccc;border-radius:4px;font-family:inherit}
+.guess .reveal{display:none;margin-top:12px;padding:12px;background:var(--teal-light);border-radius:6px;font-size:15px}
+button.btn{background:var(--teal-dark);color:#fff;border:none;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:14px;margin-top:10px;font-family:inherit}
+button.btn:hover{background:var(--teal-mid)}
+button.btn.orange{background:var(--orange)}
+.example{background:#fff;border:1px solid #ddd;border-radius:8px;padding:20px;margin:20px 0;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.example h3{color:var(--teal-dark);margin-top:0}
+.step{border-top:1px solid #eee;padding:12px 0;margin-top:8px}
+.step strong{color:var(--teal-dark)}
+.answer{background:var(--teal-light);border-left:4px solid var(--teal-dark);padding:10px 14px;margin-top:12px;border-radius:0 6px 6px 0;font-size:16px}
+.answer strong{color:var(--teal-dark)}
+table.std{width:100%;border-collapse:collapse;margin:14px 0;background:#fff}
+table.std th{background:var(--navy);color:#fff;padding:8px;text-align:left;font-family:Arial,sans-serif;font-size:14px}
+table.std td{padding:8px;border:1px solid #ddd;font-size:14px}
+.svg-fig{display:flex;justify-content:center;margin:14px 0;background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px}
+#letter-circle-app{display:grid;grid-template-columns:1fr 280px;gap:14px;background:#fff;border:1px solid #ddd;border-radius:8px;padding:14px;margin:18px 0}
+#letter-circle-app .readout p{margin:6px 0;font-size:14px}
+#letter-circle-app circle.ltr-pt{cursor:pointer}
+.exit{background:#f0f8f8;border-top:3px solid var(--teal-dark);padding:28px 24px;margin-top:40px}
+.exit h2{color:var(--teal-dark);font-size:20px;margin-top:0}
+.exit .q{margin-bottom:24px}
+.exit textarea{width:90%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;font-family:inherit}
+.feedback{display:none;margin-top:8px;padding:10px;border-radius:6px;font-size:14px}
+#stars{font-size:28px;cursor:pointer;letter-spacing:4px;user-select:none}
+footer.bot{background:var(--navy);color:#aaa;padding:14px 24px;font-size:12px;text-align:center;margin-top:48px}
+@media(max-width:780px){.layout{flex-direction:column}nav.side{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid var(--gray-mid)}#letter-circle-app{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div>
+    <p>Math 172 — Santa Ana College</p>
+    <h1>Lesson 11B: Trig Across Quadrants</h1>
+  </div>
+  <div style="font-size:12px;opacity:0.6;text-align:right">Spring 2026 · Part B of 2</div>
+</header>
+
+<div class="lo-bar">
+  <strong>By the end of Part B you will be able to:</strong>
+  <ul>
+    <li>Use coterminal angles to determine the 6 trig ratios of positive and negative angles in all quadrants</li>
+    <li>Find all 6 trig ratios from a point on the terminal side</li>
+    <li>Find all 6 trig ratios from one ratio + a quadrant (Pythagorean Identity + ASTC)</li>
+    <li>Use unit-circle symmetry to find a different angle with the same trig value</li>
+  </ul>
+</div>
+
+<div class="layout">
+<nav class="side">
+  <h4>Sections</h4>
+  <a href="#s7" class="active">7. Coterminal Angles</a>
+  <a href="#s8">8. Trig from a Point (x, y)</a>
+  <a href="#s9">9. From One Ratio + Quadrant</a>
+  <a href="#s10">10. Trig Symmetry</a>
+  <a href="#collab">Collaborative</a>
+  <a href="#exit">Exit Check</a>
+</nav>
+
+<main>
+
+<!-- ========== SECTION 7 ========== -->
+<section id="s7">
+  <h2>7 · Coterminal Angles</h2>
+  <div class="def">
+    <p class="src">Definition — OpenStax §7.1</p>
+    <p><strong>Coterminal Angles:</strong> two angles in standard position are coterminal if they share the same initial and terminal side — they point in the same direction but may have completed a different number of full rotations.</p>
+    <p><strong>To find a coterminal angle:</strong> add or subtract multiples of \(360^\circ\) (in degrees) or \(2\pi\) (in radians).</p>
+    <p>\[\theta \pm n\cdot 360^\circ \quad\text{or}\quad \theta \pm n\cdot 2\pi\]</p>
+  </div>
+
+  <div class="guess">
+    <p class="q">Predict: which is coterminal with \(45^\circ\) — \(405^\circ\), \(315^\circ\), or \(-45^\circ\)?</p>
+    <input type="text" placeholder="Your prediction…">
+    <br><button class="btn orange" onclick="revealNext(this)">Reveal</button>
+    <div class="reveal"><strong>Answer:</strong> \(405^\circ = 45^\circ + 360^\circ\), so it <em>is</em> coterminal. \(315^\circ\) and \(-45^\circ\) are not (they're coterminal with each other but not with \(45^\circ\)).</div>
+  </div>
+
+  <div class="example" id="ex1">
+    <h3>Worked Example 1 — Reduce \(7058^\circ\)</h3>
+    <p>Find an angle in \([0^\circ, 360^\circ)\) coterminal with \(7058^\circ\).</p>
+    <div id="ex1-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> Divide: \(7058 \div 360 \approx 19.6\). So 19 full turns are inside \(7058^\circ\).</div>
+      <div class="step"><strong>Step 2:</strong> Subtract \(19 \cdot 360 = 6840\). \(\;7058 - 6840 = 218\).</div>
+      <div class="answer">Coterminal angle: \(218^\circ\) (in QIII).</div>
+    </div>
+    <button class="btn" onclick="reveal('ex1','this')">Show Solution</button>
+  </div>
+
+  <div class="example" id="ex2">
+    <h3>Worked Example 2 — Reduce \(31\pi/6\)</h3>
+    <div id="ex2-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> Subtract \(2\pi=\dfrac{12\pi}{6}\) until inside \([0,2\pi)\).</div>
+      <div class="step"><strong>Step 2:</strong> \(\dfrac{31\pi}{6}-\dfrac{12\pi}{6}=\dfrac{19\pi}{6}\); again \(\dfrac{19\pi}{6}-\dfrac{12\pi}{6}=\dfrac{7\pi}{6}\).</div>
+      <div class="answer">Coterminal: \(\dfrac{7\pi}{6}\) (QIII, ref angle \(30^\circ\)).</div>
+    </div>
+    <button class="btn" onclick="reveal('ex2','this')">Show Solution</button>
+  </div>
+</section>
+
+<!-- ========== SECTION 8 ========== -->
+<section id="s8">
+  <h2>8 · All 6 Trig Ratios from a Point on the Terminal Side</h2>
+
+  <div class="def">
+    <p class="src">Definition — OpenStax §7.4 / SAC Notes</p>
+    <p><strong>Key Idea:</strong> if a point \((x,y)\) lies on the terminal side of \(\theta\), the distance from the origin acts as the hypotenuse: \(r=\sqrt{x^2+y^2}\). All 6 ratios follow without needing the angle.</p>
+    <p>\[\sin\theta=\dfrac{y}{r},\ \cos\theta=\dfrac{x}{r},\ \tan\theta=\dfrac{y}{x}\]</p>
+    <p>\[\csc\theta=\dfrac{r}{y},\ \sec\theta=\dfrac{r}{x},\ \cot\theta=\dfrac{x}{y}\]</p>
+  </div>
+
+  <div class="warn">
+    <p><strong>Signs:</strong> \(r\) is always positive. The signs of \(x\) and \(y\) determine the signs of the ratios — no need to memorize ASTC separately when you use \((x,y)\) directly.</p>
+  </div>
+
+  <div class="example" id="ex3">
+    <h3>Worked Example 3 — Point \((-5, 12)\)</h3>
+    <p>Find all 6 trig ratios for \(\theta\) with terminal side through \((-5,12)\).</p>
+    <div id="ex3-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> \(r=\sqrt{(-5)^2+12^2}=\sqrt{169}=13\).</div>
+      <div class="step"><strong>Step 2:</strong> Quadrant: \(x<0, y>0\Rightarrow\) QII.</div>
+      <div class="step"><strong>Step 3:</strong> Apply definitions.</div>
+      <div class="answer">\(\sin=\dfrac{12}{13},\ \cos=-\dfrac{5}{13},\ \tan=-\dfrac{12}{5}\)<br>\(\csc=\dfrac{13}{12},\ \sec=-\dfrac{13}{5},\ \cot=-\dfrac{5}{12}\)</div>
+    </div>
+    <button class="btn" onclick="reveal('ex3','this')">Show Solution</button>
+  </div>
+
+  <div class="guess">
+    <p class="q">For point \((-48, 55)\), which quadrant is \(\theta\) in, and what is \(r\)?</p>
+    <input type="text" placeholder="Quadrant + r value…">
+    <br><button class="btn orange" onclick="revealNext(this)">Reveal</button>
+    <div class="reveal"><strong>Answer:</strong> \(x<0, y>0\Rightarrow\) QII. \(r=\sqrt{48^2+55^2}=\sqrt{2304+3025}=\sqrt{5329}=73\).</div>
+  </div>
+</section>
+
+<!-- ========== SECTION 9 ========== -->
+<section id="s9">
+  <h2>9 · All 6 Ratios from One Trig Value + Quadrant</h2>
+
+  <div class="def">
+    <p class="src">Definition — OpenStax §7.4 / SAC Notes</p>
+    <p><strong>Key Idea:</strong> if you know one ratio and the quadrant of \(\theta\), find the rest using the Pythagorean Identity and ASTC.</p>
+    <p><strong>Pythagorean Identity:</strong> \(\sin^2\theta + \cos^2\theta = 1\).</p>
+    <p><strong>Three steps:</strong> (1) substitute the known ratio to find the other; (2) use the quadrant to assign the correct sign; (3) compute the four reciprocals.</p>
+  </div>
+
+  <div class="example" id="ex4">
+    <h3>Worked Example 4 — \(\sin\theta=\dfrac{2}{3}\), QII</h3>
+    <div id="ex4-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> \(\sin^2\theta+\cos^2\theta=1 \Rightarrow \dfrac{4}{9}+\cos^2\theta=1\Rightarrow \cos^2\theta=\dfrac{5}{9}\). Magnitude: \(\dfrac{\sqrt{5}}{3}\).</div>
+      <div class="step"><strong>Step 2:</strong> QII: cosine is negative. So \(\cos\theta=-\dfrac{\sqrt{5}}{3}\).</div>
+      <div class="step"><strong>Step 3:</strong> \(\tan = \dfrac{\sin}{\cos}=\dfrac{2/3}{-\sqrt{5}/3}=-\dfrac{2}{\sqrt{5}}=-\dfrac{2\sqrt{5}}{5}\). Reciprocals: \(\csc=\dfrac{3}{2},\ \sec=-\dfrac{3}{\sqrt{5}}=-\dfrac{3\sqrt{5}}{5},\ \cot=-\dfrac{\sqrt{5}}{2}\).</div>
+      <div class="answer">\(\sin=\dfrac{2}{3},\ \cos=-\dfrac{\sqrt{5}}{3},\ \tan=-\dfrac{2\sqrt{5}}{5},\ \csc=\dfrac{3}{2},\ \sec=-\dfrac{3\sqrt{5}}{5},\ \cot=-\dfrac{\sqrt{5}}{2}\)</div>
+    </div>
+    <button class="btn" onclick="reveal('ex4','this')">Show Solution</button>
+  </div>
+</section>
+
+<!-- ========== SECTION 10 ========== -->
+<section id="s10">
+  <h2>10 · Trig Symmetry — Same Value, Different Angle</h2>
+  <div class="def">
+    <p class="src">Definition — OpenStax §7.3</p>
+    <p><strong>Big idea:</strong> trig values repeat. Different angles can share a sine or cosine because of the unit circle's symmetry.</p>
+    <p><strong>Same Sine Rule:</strong> \(\sin\theta=\sin(180^\circ-\theta)\) — supplements share sine.</p>
+    <p><strong>Same Cosine Rule:</strong> \(\cos\theta=\cos(360^\circ-\theta)\) — reflection across the x-axis shares cosine.</p>
+    <p><strong>Coterminal connection:</strong> any \(\theta\pm 360^\circ\) (or \(\pm 2\pi\)) shares <em>all</em> six trig values.</p>
+  </div>
+
+  <div class="example" id="ex5">
+    <h3>Worked Example 5 — \(\tan(390^\circ)\)</h3>
+    <div id="ex5-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> \(390^\circ - 360^\circ = 30^\circ\). Coterminal!</div>
+      <div class="step"><strong>Step 2:</strong> \(\tan(30^\circ)=\dfrac{1}{\sqrt{3}}=\dfrac{\sqrt{3}}{3}\).</div>
+      <div class="answer">\(\tan(390^\circ)=\dfrac{\sqrt{3}}{3}\)</div>
+    </div>
+    <button class="btn" onclick="reveal('ex5','this')">Show Solution</button>
+  </div>
+
+  <div class="example" id="ex6">
+    <h3>Worked Example 6 — Find an angle with the same sine as \(190^\circ\)</h3>
+    <div id="ex6-steps" style="display:none">
+      <div class="step"><strong>Step 1:</strong> \(190^\circ\) is in QIII. Reference angle \(=10^\circ\). \(\sin(190^\circ)\) is negative.</div>
+      <div class="step"><strong>Step 2:</strong> Sine is negative in QIII <em>and</em> QIV. The other angle with reference \(10^\circ\) and negative sine is in QIV: \(360^\circ-10^\circ=350^\circ\).</div>
+      <div class="answer">\(\sin(190^\circ)=\sin(350^\circ)\)</div>
+    </div>
+    <button class="btn" onclick="reveal('ex6','this')">Show Solution</button>
+  </div>
+
+  <div class="guess">
+    <p class="q">Find another angle in \([0^\circ, 360^\circ)\) with the same cosine as \(100^\circ\).</p>
+    <input type="text" placeholder="Your answer…">
+    <br><button class="btn orange" onclick="revealNext(this)">Reveal</button>
+    <div class="reveal"><strong>Answer:</strong> \(\cos(100^\circ) = \cos(360^\circ - 100^\circ) = \cos(260^\circ)\). Both are in quadrants where cosine is negative (QII and QIII), with reference angle \(80^\circ\).</div>
+  </div>
+</section>
+
+<!-- ========== COLLABORATIVE ========== -->
+<section id="collab">
+  <h2>👥 Collaborative Learning</h2>
+
+  <p>Work with your group. Use the labeled unit-circle below — click a letter to evaluate. Discuss how you identify each angle <em>before</em> evaluating.</p>
+
+  <div id="letter-circle-app">
+    <div>
+      <svg id="lc-svg" viewBox="-160 -160 320 320" width="100%" height="380" aria-label="Lettered unit circle (A–P) at every 22.5° step">
+        <line x1="-150" y1="0" x2="150" y2="0" stroke="#999" stroke-width="0.6"/>
+        <line x1="0" y1="-150" x2="0" y2="150" stroke="#999" stroke-width="0.6"/>
+        <circle cx="0" cy="0" r="110" fill="none" stroke="#1a6b6b" stroke-width="1.6"/>
+        <g id="lc-spokes" stroke="#bbd9d9" stroke-width="0.5"></g>
+        <g id="lc-letters"></g>
+        <line id="lc-term" x1="0" y1="0" x2="110" y2="0" stroke="#e07020" stroke-width="2" style="display:none"/>
+        <text x="-153" y="-6" font-size="10" fill="#666">y</text>
+        <text x="142" y="-3" font-size="10" fill="#666">x</text>
+      </svg>
+    </div>
+    <div class="readout">
+      <p><strong>Selected:</strong> <span id="lc-letter">—</span></p>
+      <p><strong>Angle:</strong> <span id="lc-deg">—</span>° = <span id="lc-rad">—</span></p>
+      <p><strong>Quadrant:</strong> <span id="lc-quad">—</span></p>
+      <p><strong>(cos, sin):</strong> (<span id="lc-cos">—</span>, <span id="lc-sin">—</span>)</p>
+      <p><strong>tan:</strong> <span id="lc-tan">—</span></p>
+      <p><strong>csc / sec / cot:</strong> <span id="lc-recips">—</span></p>
+    </div>
+  </div>
+
+  <p><strong>1. Group task:</strong> for each letter below, write the angle in radians and evaluate the trig function. Check your work with the diagram above.</p>
+  <table class="std">
+    <thead><tr><th>Function</th><th>Letter Angle (deg)</th><th>Angle (rad)</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>\(\sin L\)</td><td></td><td></td><td></td></tr>
+      <tr><td>\(\cos H\)</td><td></td><td></td><td></td></tr>
+      <tr><td>\(\tan A\)</td><td></td><td></td><td></td></tr>
+      <tr><td>\(\csc D\)</td><td></td><td></td><td></td></tr>
+      <tr><td>\(\sec K\)</td><td></td><td></td><td></td></tr>
+      <tr><td>\(\cot G\)</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>2. Group task:</strong> find ALL letters whose angle satisfies the condition.</p>
+  <table class="std">
+    <thead><tr><th>Condition</th><th>Letters</th></tr></thead>
+    <tbody>
+      <tr><td>\(\sin\theta=\dfrac{\sqrt{2}}{2}\)</td><td></td></tr>
+      <tr><td>\(\tan\theta=0\)</td><td></td></tr>
+      <tr><td>\(\cos\theta=-\dfrac{\sqrt{3}}{2}\)</td><td></td></tr>
+      <tr><td>\(\sec\theta=2\)</td><td></td></tr>
+      <tr><td>\(\tan\theta\) is undefined</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    <p><strong>Discussion prompt:</strong> Why must the answer for "tan θ is undefined" only include angles on the y-axis? What about \((\cos\theta, \sin\theta)\) at those points makes tangent fail?</p>
+  </div>
+</section>
+
+<!-- ========== EXIT CHECK ========== -->
+<section class="exit" id="exit">
+  <h2>📋 Exit Check — Lesson 11B</h2>
+
+  <div class="q">
+    <p style="font-weight:bold">Q1. Which is coterminal with \(-110^\circ\)?</p>
+    <label><input type="radio" name="q1" value="a"> (A) \(110^\circ\)</label><br>
+    <label><input type="radio" name="q1" value="b"> (B) \(250^\circ\)</label><br>
+    <label><input type="radio" name="q1" value="c"> (C) \(290^\circ\)</label><br>
+    <button class="btn" onclick="checkMC('q1','b','-110° + 360° = 250°.')">Check</button>
+    <div id="q1-feedback" class="feedback"></div>
+  </div>
+
+  <div class="q">
+    <p style="font-weight:bold">Q2. \(\cos\theta=\dfrac{1}{7}\) and \(\theta\) is in QIV. What is the sign of \(\sin\theta\)?</p>
+    <label><input type="radio" name="q2" value="a"> (A) Positive</label><br>
+    <label><input type="radio" name="q2" value="b"> (B) Negative</label><br>
+    <label><input type="radio" name="q2" value="c"> (C) Zero</label><br>
+    <button class="btn" onclick="checkMC('q2','b','In QIV cosine is positive but sine is negative (ASTC: only Cosine is + in QIV).')">Check</button>
+    <div id="q2-feedback" class="feedback"></div>
+  </div>
+
+  <div class="q">
+    <p style="font-weight:bold">Q3 (short answer). In your own words, explain why two different angles can have the exact same sine.</p>
+    <textarea rows="3"></textarea><br>
+    <button class="btn orange" onclick="revealNext(this)">See Model Answer</button>
+    <div class="reveal" style="display:none;background:#e6f4f4;padding:12px;border-radius:6px;margin-top:8px"><strong>Model:</strong> Sine is the y-coordinate on the unit circle. Two different angles can land on points with the same y-value — supplementary angles (\(\theta\) and \(180^\circ-\theta\)) reflect across the y-axis but keep the same height. Coterminal angles also share all trig values because they end at exactly the same point.</div>
+  </div>
+
+  <div class="q">
+    <p style="font-weight:bold">Confidence on today's objectives:</p>
+    <div id="stars">☆☆☆☆☆</div>
+    <p id="star-label" style="font-size:13px;color:#888;margin:4px 0 0"></p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="bot">Math 172 &nbsp;|&nbsp; Lesson 11B: Trig Across Quadrants &nbsp;|&nbsp; Santa Ana College &nbsp;|&nbsp; Built for SAC</footer>
+
+<script>
+function reveal(id, btn){
+  document.getElementById(id+'-steps').style.display='block';
+  if(typeof event!=='undefined' && event && event.target) event.target.style.display='none';
+}
+function revealNext(btn){ const r=btn.parentElement.querySelector('.reveal'); if(r){r.style.display='block'; btn.style.display='none';} }
+function checkMC(name, correct, exp){
+  const sel=document.querySelector('input[name="'+name+'"]:checked');
+  const fb=document.getElementById(name+'-feedback');
+  fb.style.display='block';
+  if(!sel){ fb.style.background='#fff3e6'; fb.textContent='Select an answer first.'; return; }
+  if(sel.value===correct){ fb.style.background='#e6f4f4'; fb.style.color='#1a6b6b'; fb.innerHTML='✅ Correct! '+exp; }
+  else{ fb.style.background='#fdecea'; fb.style.color='#c0392b'; fb.innerHTML='❌ Not quite. '+exp; }
+  if(window.renderMathInElement) renderMathInElement(fb);
+}
+const starLabels=['','Still confused','Somewhat unsure','Mostly got it','Confident','Very confident'];
+const stEl=document.getElementById('stars');
+if(stEl){ stEl.addEventListener('click', function(e){
+  const r=this.getBoundingClientRect(); const x=e.clientX-r.left; const sw=r.width/5;
+  const rating=Math.max(1,Math.min(5,Math.ceil(x/sw)));
+  this.textContent='★'.repeat(rating)+'☆'.repeat(5-rating);
+  document.getElementById('star-label').textContent=starLabels[rating]||'';
+});}
+const links=document.querySelectorAll('nav.side a');
+const sections=Array.from(document.querySelectorAll('section'));
+window.addEventListener('scroll', ()=>{
+  let cur=sections[0].id;
+  sections.forEach(s=>{ if(window.scrollY+120>=s.offsetTop) cur=s.id; });
+  links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+});
+
+// === Lettered Unit Circle (16 letters at 22.5° steps to mirror SAC notes diagram) ===
+(function(){
+  const svg=document.getElementById('lc-svg');
+  if(!svg) return;
+  const term=document.getElementById('lc-term');
+  const spokesG=document.getElementById('lc-spokes');
+  const lettersG=document.getElementById('lc-letters');
+  const R=110;
+  // Letters A→P every 22.5° starting at 0°, going counterclockwise.
+  // Common SAC convention places A at 0° going CCW.
+  const labels=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'];
+  const angles=labels.map((_,i)=>i*22.5);
+  angles.forEach((d,i)=>{
+    const r=d*Math.PI/180;
+    const x=R*Math.cos(r), y=-R*Math.sin(r);
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',0); ln.setAttribute('y1',0); ln.setAttribute('x2',x); ln.setAttribute('y2',y);
+    spokesG.appendChild(ln);
+    // Letter label outside the circle
+    const lx=(R+18)*Math.cos(r), ly=-(R+18)*Math.sin(r)+4;
+    const lt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    lt.setAttribute('x',lx); lt.setAttribute('y',ly);
+    lt.setAttribute('font-size','13'); lt.setAttribute('font-family','Georgia');
+    lt.setAttribute('fill','#1a6b6b'); lt.setAttribute('text-anchor','middle');
+    lt.setAttribute('font-weight','bold'); lt.textContent=labels[i];
+    lettersG.appendChild(lt);
+    // Clickable point on circle
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',6);
+    c.setAttribute('fill','#fff'); c.setAttribute('stroke','#1a6b6b'); c.setAttribute('stroke-width','1.5');
+    c.setAttribute('class','ltr-pt');
+    c.addEventListener('click', ()=>select(i));
+    lettersG.appendChild(c);
+  });
+  function fmtRad(deg){
+    const map={0:'0',22.5:'π/8',45:'π/4',67.5:'3π/8',90:'π/2',112.5:'5π/8',135:'3π/4',157.5:'7π/8',
+      180:'π',202.5:'9π/8',225:'5π/4',247.5:'11π/8',270:'3π/2',292.5:'13π/8',315:'7π/4',337.5:'15π/8'};
+    return map[deg]!==undefined?map[deg]:(deg*Math.PI/180).toFixed(3);
+  }
+  function quadrant(deg){
+    deg=((deg%360)+360)%360;
+    if(deg===0||deg===180) return 'x-axis';
+    if(deg===90||deg===270) return 'y-axis';
+    if(deg<90) return 'I';
+    if(deg<180) return 'II';
+    if(deg<270) return 'III';
+    return 'IV';
+  }
+  function fmt(v){
+    const eps=0.001;
+    const named=[[0,'0'],[1,'1'],[-1,'-1'],[0.5,'1/2'],[-0.5,'-1/2'],
+      [Math.SQRT2/2,'√2/2'],[-Math.SQRT2/2,'-√2/2'],
+      [Math.sqrt(3)/2,'√3/2'],[-Math.sqrt(3)/2,'-√3/2'],
+      [Math.sqrt(3),'√3'],[-Math.sqrt(3),'-√3'],
+      [Math.sqrt(3)/3,'√3/3'],[-Math.sqrt(3)/3,'-√3/3'],
+      [2,'2'],[-2,'-2'],[2/Math.sqrt(3),'2√3/3'],[-2/Math.sqrt(3),'-2√3/3']];
+    for(const [n,s] of named) if(Math.abs(v-n)<eps) return s;
+    return v.toFixed(3);
+  }
+  function select(i){
+    const deg=angles[i]; const r=deg*Math.PI/180;
+    const x=R*Math.cos(r), y=-R*Math.sin(r);
+    term.style.display='block'; term.setAttribute('x2',x); term.setAttribute('y2',y);
+    document.getElementById('lc-letter').textContent=labels[i];
+    document.getElementById('lc-deg').textContent=deg;
+    document.getElementById('lc-rad').textContent=fmtRad(deg);
+    document.getElementById('lc-quad').textContent=quadrant(deg);
+    const c=Math.cos(r), s=Math.sin(r);
+    document.getElementById('lc-cos').textContent=fmt(c);
+    document.getElementById('lc-sin').textContent=fmt(s);
+    document.getElementById('lc-tan').textContent=Math.abs(c)<0.0001?'undefined':fmt(s/c);
+    const csc=Math.abs(s)<0.0001?'undef':fmt(1/s);
+    const sec=Math.abs(c)<0.0001?'undef':fmt(1/c);
+    const cot=Math.abs(s)<0.0001?'undef':fmt(c/s);
+    document.getElementById('lc-recips').textContent=csc+' / '+sec+' / '+cot;
+  }
+})();
+
+document.addEventListener("DOMContentLoaded", function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {
+      delimiters:[
+        {left:"\\[",right:"\\]",display:true},
+        {left:"\\(",right:"\\)",inline:true}
+      ]
+    });
+  }
+});
+</script>
+</body>
+</html>
